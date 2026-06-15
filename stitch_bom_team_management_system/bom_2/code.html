@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BOM List - Blueprint Ops</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ceccec",
+                        "surface-dim": "#cbdced",
+                        "outline-variant": "#a6b3c2",
+                        "surface": "#f7f9ff",
+                        "on-secondary-container": "#505257",
+                        "tertiary-dim": "#51506c",
+                        "inverse-on-surface": "#999da3",
+                        "inverse-primary": "#84acf2",
+                        "tertiary": "#5d5c78",
+                        "primary-fixed": "#d6e3ff",
+                        "error-dim": "#4e0309",
+                        "surface-tint": "#335e9f",
+                        "background": "#f7f9ff",
+                        "secondary-fixed": "#e2e2e9",
+                        "outline": "#6f7c89",
+                        "on-primary-fixed-variant": "#305b9c",
+                        "on-tertiary": "#fbf7ff",
+                        "surface-container-low": "#eff4fc",
+                        "on-secondary": "#f8f8ff",
+                        "on-surface-variant": "#53606d",
+                        "on-background": "#27343f",
+                        "surface-variant": "#d6e4f3",
+                        "primary-dim": "#255292",
+                        "error": "#9f403d",
+                        "secondary-dim": "#515359",
+                        "surface-bright": "#f7f9ff",
+                        "surface-container-high": "#dee9f6",
+                        "secondary-fixed-dim": "#d3d4db",
+                        "on-tertiary-fixed": "#3a3953",
+                        "on-error": "#fff7f6",
+                        "on-primary-fixed": "#053e7d",
+                        "on-tertiary-container": "#4d4c67",
+                        "surface-container-highest": "#d6e4f3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#565571",
+                        "on-secondary-fixed-variant": "#5a5b61",
+                        "on-primary-container": "#245191",
+                        "on-error-container": "#752121",
+                        "primary-fixed-dim": "#c0d5ff",
+                        "secondary": "#5d5f65",
+                        "on-primary": "#f7f7ff",
+                        "tertiary-container": "#dcd9fa",
+                        "on-surface": "#27343f",
+                        "primary": "#335e9f",
+                        "surface-container": "#e7eff9",
+                        "secondary-container": "#e2e2e9",
+                        "inverse-surface": "#0a0f13",
+                        "tertiary-fixed": "#dcd9fa",
+                        "error-container": "#fe8983",
+                        "primary-container": "#d6e3ff",
+                        "on-secondary-fixed": "#3d3f45"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-headline { font-family: 'Manrope', sans-serif; }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .bg-gradient-texture {
+            background-image: linear-gradient(135deg, theme('colors.primary'), theme('colors.primary-dim'));
+        }
+        
+        .glass-panel {
+            background-color: rgba(214, 228, 243, 0.85); /* surface-variant at 85% */
+            backdrop-filter: blur(12px);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(166, 179, 194, 0.4); /* outline-variant at 40% */
+            border-radius: theme('borderRadius.full');
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(166, 179, 194, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-64 z-50 bg-gradient-to-b from-[#eff4fc] to-[#f7f9ff] dark:from-[#0f172a] dark:to-[#0a0f13] shadow-xl shadow-blue-900/5 flex flex-col py-6 px-4 gap-2 hidden md:flex">
+<!-- Header -->
+<div class="flex items-center gap-3 px-4 mb-8">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary font-bold overflow-hidden">
+<img alt="Organization Logo" class="w-full h-full object-cover" data-alt="Abstract blue geometric engineering logo design with sharp angles and clean lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh8GQSZWSAIS2qgMdLgO4ETtdVnmld4U7ziIbi7rDpVu7_3JrT7XgRGuNaz2IetQekABOIio7oROWtDlxPwWVnJ0J8s7VMbtozFVNlcLJnBiRJW7Yyoo5fVOLbgrie8zqq6tBlirdbeskW8pqx3JvSoNJcNj_GOVVANnabvvUndqECvntL641WhcWG9GxKqqoAvDfFPcZMlvXBaMVq06FKM9E1L7Sr2FunVOyK00AghLwZpqN_TmVY57wPW3bHod6Jxg99qKNkZ6Pc"/>
+</div>
+<div>
+<div class="text-lg font-black text-[#2B5797]">Blueprint Ops</div>
+<div class="font-['Manrope'] text-sm font-medium text-on-surface-variant">Engineering Team</div>
+</div>
+</div>
+<!-- Primary CTA -->
+<div class="px-2 mb-4">
+<button class="w-full bg-gradient-texture text-on-primary py-2.5 px-4 rounded-lg font-medium text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Project
+            </button>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-1 flex-1">
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-[#2B5797] hover:bg-[#dee9f6]/50 dark:hover:bg-[#1e293b]/50 transition-all duration-200 ease-in-out font-['Manrope'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-[#ffffff] dark:bg-[#1e293b] text-[#2B5797] dark:text-[#ffffff] shadow-sm font-bold transition-all duration-200 ease-in-out font-['Manrope'] text-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+                BOM Projects
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-[#2B5797] hover:bg-[#dee9f6]/50 dark:hover:bg-[#1e293b]/50 transition-all duration-200 ease-in-out font-['Manrope'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">layers</span>
+                Material Library
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-[#2B5797] hover:bg-[#dee9f6]/50 dark:hover:bg-[#1e293b]/50 transition-all duration-200 ease-in-out font-['Manrope'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+                Team Activity
+            </a>
+</div>
+<!-- Footer Navigation -->
+<div class="flex flex-col gap-1 mt-auto pt-4 border-t-0">
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-[#2B5797] hover:bg-[#dee9f6]/50 dark:hover:bg-[#1e293b]/50 transition-all duration-200 ease-in-out font-['Manrope'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-[#2B5797] hover:bg-[#dee9f6]/50 dark:hover:bg-[#1e293b]/50 transition-all duration-200 ease-in-out font-['Manrope'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">contact_support</span>
+                Support
+            </a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:pl-64 h-full">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-0 md:left-64 h-16 z-40 bg-[#eff4fc] dark:bg-[#151b22] border-none flex items-center justify-between px-8 w-full flat no shadows">
+<!-- Mobile Menu & Search Area -->
+<div class="flex items-center gap-4 flex-1">
+<button class="md:hidden text-[#335e9f] dark:text-[#6fa1ff] hover:bg-[#dee9f6] dark:hover:bg-[#1e293b] p-2 rounded-lg transition-colors scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Search Component -->
+<div class="relative max-w-md w-full hidden sm:block group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline-variant text-sm group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 bg-surface-container-highest border-0 rounded-lg text-body-sm focus:ring-0 focus:bg-surface-container-lowest focus:border-b-2 focus:border-primary transition-all text-on-surface placeholder-on-surface-variant" placeholder="Search by name, category, or engineer..." type="text"/>
+</div>
+</div>
+<!-- Mobile Brand (Hidden on Desktop) -->
+<div class="md:hidden text-xl font-bold text-[#2B5797] dark:text-[#6fa1ff] font-['Manrope'] font-semibold tracking-tight">
+                BOM Catalyst
+            </div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-2">
+<button class="text-[#335e9f] dark:text-[#6fa1ff] hover:bg-[#dee9f6] dark:hover:bg-[#1e293b] transition-colors p-2 rounded-full scale-95 active:scale-90 transition-transform relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-[#335e9f] dark:text-[#6fa1ff] hover:bg-[#dee9f6] dark:hover:bg-[#1e293b] transition-colors p-2 rounded-full scale-95 active:scale-90 transition-transform hidden sm:block">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="text-[#335e9f] dark:text-[#6fa1ff] hover:bg-[#dee9f6] dark:hover:bg-[#1e293b] transition-colors p-2 rounded-full scale-95 active:scale-90 transition-transform hidden sm:block">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="ml-2 pl-4 border-l border-surface-variant h-8 flex items-center">
+<button class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border-2 border-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Headshot of professional man smiling gently against neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlueLq5Tz-FHCwcdKr4le08rqN0Zn6znml04LLIFB2Lx0ja7wejbM5gk9UO4qGhEGgVutmXoOUJyDHJA-rqVCDlgf8NFAqqRhvhH-nMOBrVEWki5ZFdWNC-MY1jx8Qo0phPs8oKEy23z_sratDnqX0Zp5Aq5Inj0jVd1O8wnXdYJITCDeyw_YUHZJEDFgjh4a51b5coAnWM1xxOybH6JvnAyCf_V4TqKqghBez-g2cCvwg2pL9vL3QeCxn9Ua1qe4mrC0NrFeDJMxN"/>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 mt-16 p-8 overflow-y-auto bg-surface relative">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+<div>
+<h1 class="font-headline text-[2.25rem] text-on-background font-bold tracking-tight">BOM Projects</h1>
+<p class="text-body-sm text-on-surface-variant mt-1">Manage, version, and track all engineering material lists.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-surface-container-highest text-primary py-2 px-4 rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-surface-container-lowest transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Filters
+                    </button>
+<button class="bg-gradient-texture text-on-primary py-2 px-4 rounded-lg font-medium text-sm flex items-center gap-2 hover:opacity-90 transition-opacity shadow-[0_4px_12px_rgba(51,94,159,0.2)]">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        New Project
+                    </button>
+</div>
+</div>
+<!-- Content Container - High Density Elegance -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden p-1">
+<!-- Tools Row -->
+<div class="flex items-center justify-between p-3 mb-2 bg-surface-container-lowest rounded-lg">
+<div class="flex items-center gap-2 text-sm text-on-surface-variant font-medium">
+<span class="bg-surface-container-high px-2 py-1 rounded text-primary">All Projects (124)</span>
+<span class="px-2 py-1 hover:bg-surface-container cursor-pointer rounded transition-colors">My Projects</span>
+<span class="px-2 py-1 hover:bg-surface-container cursor-pointer rounded transition-colors">Archived</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">view_list</span>
+</button>
+<button class="p-1.5 text-primary bg-surface-container rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="w-full overflow-x-auto rounded-lg">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider bg-surface-container-lowest">
+<th class="py-3 px-4 font-headline rounded-tl-lg">Project ID</th>
+<th class="py-3 px-4 font-headline">Project Name</th>
+<th class="py-3 px-4 font-headline">Category</th>
+<th class="py-3 px-4 font-headline text-right">Version</th>
+<th class="py-3 px-4 font-headline">Author</th>
+<th class="py-3 px-4 font-headline">Last Modified</th>
+<th class="py-3 px-4 font-headline">Status</th>
+<th class="py-3 px-4 font-headline rounded-tr-lg"></th>
+</tr>
+</thead>
+<tbody class="text-sm align-middle font-body text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="font-mono text-primary font-medium bg-surface-container-highest px-2 py-1 rounded text-xs">PRJ-8902</span>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-background">Drone Flight Controller V2</div>
+<div class="text-xs text-on-surface-variant mt-0.5">Sub-assembly: Main Board</div>
+</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="text-xs font-medium text-tertiary">PCBA</span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap text-right font-mono text-on-surface-variant">v2.4.1</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-xs font-bold">JD</div>
+<span>J. Doe</span>
+</div>
+</td>
+<td class="py-3 px-4 whitespace-nowrap text-on-surface-variant text-xs">Oct 24, 2023</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#1e4620]/10 text-[#1e4620]">
+                                        Approved
+                                    </span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors rounded" title="View Details">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors rounded" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors rounded" title="Clone">
+<span class="material-symbols-outlined text-[18px]">file_copy</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 (Zebra stripe - Lowest) -->
+<tr class="bg-surface-container-lowest hover:bg-surface-container-high transition-colors group">
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="font-mono text-primary font-medium bg-surface-container-highest px-2 py-1 rounded text-xs">PRJ-8901</span>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-background">Motor Housing Assembly</div>
+<div class="text-xs text-on-surface-variant mt-0.5">Enclosure Components</div>
+</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="text-xs font-medium text-tertiary">Mechanical</span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap text-right font-mono text-on-surface-variant">v1.0.0</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center text-xs font-bold">AS</div>
+<span>A. Smith</span>
+</div>
+</td>
+<td class="py-3 px-4 whitespace-nowrap text-on-surface-variant text-xs">Oct 22, 2023</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#8a4a0f]/10 text-[#8a4a0f]">
+                                        Pending
+                                    </span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors rounded" title="View Details">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors rounded" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors rounded" title="Clone">
+<span class="material-symbols-outlined text-[18px]">file_copy</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="font-mono text-primary font-medium bg-surface-container-highest px-2 py-1 rounded text-xs">PRJ-8895</span>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-background">Power Distribution Module</div>
+<div class="text-xs text-on-surface-variant mt-0.5">High Voltage System</div>
+</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="text-xs font-medium text-tertiary">Electrical</span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap text-right font-mono text-on-surface-variant">v3.1.2</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-xs font-bold">MK</div>
+<span>M. Kline</span>
+</div>
+</td>
+<td class="py-3 px-4 whitespace-nowrap text-on-surface-variant text-xs">Oct 18, 2023</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-surface-variant text-on-surface-variant">
+                                        Draft
+                                    </span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors rounded" title="View Details">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors rounded" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors rounded" title="Clone">
+<span class="material-symbols-outlined text-[18px]">file_copy</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 (Zebra stripe - Lowest) -->
+<tr class="bg-surface-container-lowest hover:bg-surface-container-high transition-colors group">
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="font-mono text-primary font-medium bg-surface-container-highest px-2 py-1 rounded text-xs">PRJ-8892</span>
+</td>
+<td class="py-3 px-4">
+<div class="font-medium text-on-background">Optical Sensor Array</div>
+<div class="text-xs text-on-surface-variant mt-0.5">Vision System</div>
+</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="text-xs font-medium text-tertiary">PCBA</span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap text-right font-mono text-on-surface-variant">v1.0.5</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-xs font-bold">JD</div>
+<span>J. Doe</span>
+</div>
+</td>
+<td class="py-3 px-4 whitespace-nowrap text-on-surface-variant text-xs">Oct 15, 2023</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-error-container text-on-error-container">
+                                        Error
+                                    </span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap text-right opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors rounded" title="View Details">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors rounded" title="Edit">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors rounded" title="Clone">
+<span class="material-symbols-outlined text-[18px]">file_copy</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="bg-surface-container-lowest p-3 rounded-b-lg flex items-center justify-between mt-0.5">
+<span class="text-xs text-on-surface-variant">Showing 1 to 4 of 124 results</span>
+<div class="flex items-center gap-1">
+<button class="p-1 text-on-surface-variant hover:bg-surface-container rounded disabled:opacity-50"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="w-6 h-6 rounded bg-primary-container text-primary font-medium text-xs">1</button>
+<button class="w-6 h-6 rounded hover:bg-surface-container text-on-surface-variant text-xs">2</button>
+<button class="w-6 h-6 rounded hover:bg-surface-container text-on-surface-variant text-xs">3</button>
+<span class="text-on-surface-variant text-xs">...</span>
+<button class="w-6 h-6 rounded hover:bg-surface-container text-on-surface-variant text-xs">13</button>
+<button class="p-1 text-on-surface-variant hover:bg-surface-container rounded"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

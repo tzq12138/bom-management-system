@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-headline: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Material Design 3 颜色 */
+  --color-primary: #335e9f;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #d9e6f6;
+  --color-on-primary-container: #001c3a;
+
+  --color-secondary: #565f71;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #d9e4f4;
+  --color-on-secondary-container: #131c2b;
+
+  --color-tertiary: #705575;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #f8d8ff;
+  --color-on-tertiary-container: #28132f;
+
+  --color-surface: #f8f9fc;
+  --color-surface-dim: #dfe3ed;
+  --color-surface-variant: #c2c7ce;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f5f8;
+  --color-surface-container: #eef1f6;
+  --color-surface-container-high: #e8ecf1;
+  --color-surface-container-highest: #e2e5ec;
+  --color-on-surface: #1a1c1e;
+  --color-on-surface-variant: #42474e;
+
+  --color-outline: #72787e;
+  --color-outline-variant: #c2c7ce;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #410002;
+
+  /* Status colors */
+  --color-success: #2e7d32;
+  --color-warning: #ed6c02;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(166, 179, 194, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(166, 179, 194, 0.6);
+}
+
+/* Signature gradient for CTAs */
+.btn-primary-gradient {
+  background: linear-gradient(135deg, #335e9f 0%, #255292 100%);
+}
+
+/* Input track styling */
+.input-track {
+  background-color: var(--color-surface-container-highest);
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.input-track:focus-within {
+  background-color: #ffffff;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* Ambient shadow */
+.ambient-shadow {
+  box-shadow: 0 12px 32px rgba(39, 52, 63, 0.06);
+}
+
+/* Glass panel */
+.glass-panel {
+  background-color: rgba(214, 228, 243, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Status badges */
+.status-verified {
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+.status-outdated {
+  background-color: #fff0e6;
+  color: #b35900;
+}
+
+.status-missing {
+  background-color: var(--color-error-container);
+  color: var(--color-on-error-container);
+}
+
+.status-confirmed {
+  background-color: #e6f4ea;
+  color: #1e4620;
+}
+
+.status-pending {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.status-error {
+  background-color: var(--color-error-container);
+  color: var(--color-on-error-container);
+}
+
+.status-draft {
+  background-color: var(--color-surface-variant);
+  color: var(--color-on-surface-variant);
+}
+
+.status-approved {
+  background-color: #e6f4ea;
+  color: #1e4620;
+}

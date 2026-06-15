@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Material Library - Blueprint Ops</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#ceccec",
+                    "surface-dim": "#cbdced",
+                    "outline-variant": "#a6b3c2",
+                    "surface": "#f7f9ff",
+                    "on-secondary-container": "#505257",
+                    "tertiary-dim": "#51506c",
+                    "inverse-on-surface": "#999da3",
+                    "inverse-primary": "#84acf2",
+                    "tertiary": "#5d5c78",
+                    "primary-fixed": "#d6e3ff",
+                    "error-dim": "#4e0309",
+                    "surface-tint": "#335e9f",
+                    "background": "#f7f9ff",
+                    "secondary-fixed": "#e2e2e9",
+                    "outline": "#6f7c89",
+                    "on-primary-fixed-variant": "#305b9c",
+                    "on-tertiary": "#fbf7ff",
+                    "surface-container-low": "#eff4fc",
+                    "on-secondary": "#f8f8ff",
+                    "on-surface-variant": "#53606d",
+                    "on-background": "#27343f",
+                    "surface-variant": "#d6e4f3",
+                    "primary-dim": "#255292",
+                    "error": "#9f403d",
+                    "secondary-dim": "#515359",
+                    "surface-bright": "#f7f9ff",
+                    "surface-container-high": "#dee9f6",
+                    "secondary-fixed-dim": "#d3d4db",
+                    "on-tertiary-fixed": "#3a3953",
+                    "on-error": "#fff7f6",
+                    "on-primary-fixed": "#053e7d",
+                    "on-tertiary-container": "#4d4c67",
+                    "surface-container-highest": "#d6e4f3",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#565571",
+                    "on-secondary-fixed-variant": "#5a5b61",
+                    "on-primary-container": "#245191",
+                    "on-error-container": "#752121",
+                    "primary-fixed-dim": "#c0d5ff",
+                    "secondary": "#5d5f65",
+                    "on-primary": "#f7f7ff",
+                    "tertiary-container": "#dcd9fa",
+                    "on-surface": "#27343f",
+                    "primary": "#335e9f",
+                    "surface-container": "#e7eff9",
+                    "secondary-container": "#e2e2e9",
+                    "inverse-surface": "#0a0f13",
+                    "tertiary-fixed": "#dcd9fa",
+                    "error-container": "#fe8983",
+                    "primary-container": "#d6e3ff",
+                    "on-secondary-fixed": "#3d3f45"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9ff; color: #27343f; }
+        h1, h2, h3, h4, h5, h6, .font-headline { font-family: 'Manrope', sans-serif; }
+        
+        /* Thin, rounded scrollbars as per design system */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(166, 179, 194, 0.4);
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(166, 179, 194, 0.6);
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background-color: rgba(214, 228, 243, 0.6); /* surface-variant at 60% */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Signature Gradient for CTAs */
+        .btn-primary {
+            background: linear-gradient(135deg, #335e9f, #255292);
+            color: #f7f7ff;
+            transition: opacity 0.2s ease;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        /* Ambient Shadow */
+        .ambient-shadow {
+            box-shadow: 0 12px 32px rgba(39, 52, 63, 0.06);
+        }
+
+        /* Input styling */
+        .input-track {
+            background-color: #d6e4f3; /* surface-container-highest */
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .input-track:focus-within {
+            background-color: #ffffff; /* surface-container-lowest */
+            border-bottom-color: #335e9f; /* primary */
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-hidden w-full h-screen flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col py-6 px-4 gap-2 fixed left-0 top-0 h-full w-64 z-50 bg-gradient-to-b from-[#eff4fc] to-[#f7f9ff] dark:from-[#0f172a] dark:to-[#0a0f13] shadow-xl shadow-blue-900/5 bg-[#eff4fc] dark:bg-[#0f172a]">
+<!-- Brand Header -->
+<div class="flex items-center gap-3 px-4 mb-8">
+<div class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline font-bold text-sm">BO</div>
+<div>
+<h1 class="text-lg font-black text-[#2B5797] font-headline tracking-tight">Blueprint Ops</h1>
+<p class="text-xs text-on-surface-variant font-label">Engineering Team</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-['Manrope'] text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-[#2B5797] hover:bg-[#dee9f6]/50 dark:hover:bg-[#1e293b]/50 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-['Manrope'] text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-[#2B5797] hover:bg-[#dee9f6]/50 dark:hover:bg-[#1e293b]/50 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+<span>BOM Projects</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-['Manrope'] text-sm font-bold bg-[#ffffff] dark:bg-[#1e293b] text-[#2B5797] dark:text-[#ffffff] shadow-sm transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">layers</span>
+<span>Material Library</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-['Manrope'] text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-[#2B5797] hover:bg-[#dee9f6]/50 dark:hover:bg-[#1e293b]/50 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">group</span>
+<span>Team Activity</span>
+</a>
+</div>
+<!-- Footer Links -->
+<div class="mt-auto flex flex-col gap-1 border-t border-transparent pt-4">
+<button class="w-full mb-4 px-4 py-2.5 rounded-lg btn-primary font-headline text-sm font-semibold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Project
+            </button>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg font-['Manrope'] text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-[#2B5797] hover:bg-[#dee9f6]/50 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg font-['Manrope'] text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-[#2B5797] hover:bg-[#dee9f6]/50 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<div class="ml-0 md:ml-64 flex-1 flex flex-col h-full overflow-hidden bg-surface relative">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between px-8 w-full h-16 z-40 bg-[#f7f9ff] dark:bg-[#0a0f13] bg-[#eff4fc] dark:bg-[#151b22] border-none shrink-0 sticky top-0">
+<!-- Left: Search (from JSON config) -->
+<div class="flex-1 max-w-md">
+<div class="flex items-center w-full rounded-lg px-3 py-2 input-track">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] mr-2">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm font-body text-on-surface placeholder-on-surface-variant p-0" placeholder="Search components, part numbers..." type="text"/>
+</div>
+</div>
+<!-- Center: Brand (Optional on desktop since side nav has it, but JSON specifies it) -->
+<div class="hidden md:flex justify-center flex-1">
+<span class="text-xl font-bold text-[#2B5797] dark:text-[#6fa1ff] font-['Manrope'] tracking-tight">BOM Catalyst</span>
+</div>
+<!-- Right: Actions -->
+<div class="flex items-center justify-end gap-2 flex-1">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:bg-[#dee9f6] transition-colors scale-95 active:scale-90">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:bg-[#dee9f6] transition-colors scale-95 active:scale-90">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:bg-[#dee9f6] transition-colors scale-95 active:scale-90">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="ml-2 w-9 h-9 rounded-full overflow-hidden border border-outline-variant/15">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Professional headshot of an engineer in soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp5gT9YIA9LtDNlAvf8aBa33P6QGM9joRg7uaOKhVPYxyfThyY26_E3WaaWE56Gmayl-dJ3zbq8WQbbhmPBQgpZLl5R0LhIJ8EombK1VIKWGdDr36TU4uF3Uof8HXnl8LheMpoyUU06PY--iNE2HOX6tfFiYuBpPZxhmIzILgo0X4EviuX48LV_7z0QgKpx_BDft0C6AU8WcjNjavKZRNgxuHxVr6KNQwZ1TiX0k7RnT3TfoLM_9WYHJMViFfErZs-RRGgF-DLkKGN"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 overflow-y-auto p-8 flex flex-col gap-6">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 shrink-0">
+<div>
+<h2 class="text-[2rem] font-headline font-bold text-on-surface leading-tight tracking-tight">Material Library</h2>
+<p class="text-sm font-body text-on-surface-variant mt-1">Global catalog of approved engineering components.</p>
+</div>
+<button class="btn-primary px-5 py-2.5 rounded-lg font-headline text-sm font-semibold flex items-center gap-2 whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Add Component
+                </button>
+</div>
+<!-- Layout: 2 Columns (Tree + Table) -->
+<div class="flex flex-1 gap-6 min-h-0">
+<!-- Left Column: Categories Tree (surface-container-low) -->
+<aside class="w-64 shrink-0 bg-surface-container-low rounded-xl p-4 overflow-y-auto flex flex-col gap-4">
+<h3 class="font-headline font-semibold text-sm text-on-surface uppercase tracking-wider mb-2">Categories</h3>
+<ul class="flex flex-col gap-1">
+<!-- Active Category -->
+<li>
+<button class="w-full flex items-center justify-between text-left px-3 py-2 rounded-lg bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">keyboard_arrow_down</span>
+<span class="font-body text-sm font-semibold text-primary">Passives</span>
+</div>
+<span class="text-xs font-label text-on-surface-variant bg-surface px-1.5 py-0.5 rounded">1.2k</span>
+</button>
+<ul class="pl-7 mt-1 flex flex-col gap-1">
+<li>
+<a class="block px-3 py-1.5 rounded text-sm font-body text-on-surface bg-surface-container-high/50 font-medium" href="#">Capacitors</a>
+</li>
+<li>
+<a class="block px-3 py-1.5 rounded text-sm font-body text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest/50 transition-colors" href="#">Resistors</a>
+</li>
+<li>
+<a class="block px-3 py-1.5 rounded text-sm font-body text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest/50 transition-colors" href="#">Inductors</a>
+</li>
+</ul>
+</li>
+<!-- Inactive Category -->
+<li>
+<button class="w-full flex items-center justify-between text-left px-3 py-2 rounded-lg hover:bg-surface-container-highest/50 transition-colors">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">keyboard_arrow_right</span>
+<span class="font-body text-sm font-medium text-on-surface">Integrated Circuits</span>
+</div>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center justify-between text-left px-3 py-2 rounded-lg hover:bg-surface-container-highest/50 transition-colors">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">keyboard_arrow_right</span>
+<span class="font-body text-sm font-medium text-on-surface">Connectors</span>
+</div>
+</button>
+</li>
+</ul>
+</aside>
+<!-- Right Column: Component Table (surface-container-lowest) -->
+<div class="flex-1 bg-surface-container-lowest rounded-xl flex flex-col overflow-hidden relative group/table">
+<!-- Ghost border fallback -->
+<div class="absolute inset-0 border border-outline-variant/15 rounded-xl pointer-events-none"></div>
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-6 py-4 bg-surface-container-lowest sticky top-0 z-10 text-xs font-label font-semibold text-on-surface-variant uppercase tracking-wider border-b border-surface-container-low/0">
+<div class="col-span-3">Part Number</div>
+<div class="col-span-2">Manufacturer</div>
+<div class="col-span-2">Category</div>
+<div class="col-span-2">Status</div>
+<div class="col-span-2">Inventory</div>
+<div class="col-span-1 text-right">Links</div>
+</div>
+<!-- Table Body (No borders, tonal shifting) -->
+<div class="flex-1 overflow-y-auto pb-4">
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-4 px-6 py-3 items-center hover:bg-surface-container-high transition-colors group/row cursor-pointer">
+<div class="col-span-3 flex flex-col">
+<span class="font-headline font-bold text-sm text-on-surface">C-0402-104K-10V</span>
+<span class="font-label text-xs text-on-surface-variant mt-0.5">0.1µF 10V X7R</span>
+</div>
+<div class="col-span-2 font-body text-sm text-on-surface">Murata</div>
+<div class="col-span-2 font-body text-sm text-on-surface-variant">Capacitor</div>
+<div class="col-span-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold font-label text-on-primary-container bg-primary-container/30">
+                                    Preferred
+                                </span>
+</div>
+<div class="col-span-2 font-body text-sm font-mono text-on-surface">12,500</div>
+<div class="col-span-1 flex justify-end gap-2 text-on-surface-variant">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[18px]">description</span></button>
+<button class="hover:text-primary transition-colors opacity-0 group-hover/row:opacity-100"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</div>
+</div>
+<!-- Row 2 (Zebra stripe - subtle surface-container-lowest, since background is lowest, we use surface-container-low for stripe) -->
+<div class="grid grid-cols-12 gap-4 px-6 py-3 items-center bg-surface-container-low/30 hover:bg-surface-container-high transition-colors group/row cursor-pointer">
+<div class="col-span-3 flex flex-col">
+<span class="font-headline font-bold text-sm text-on-surface">C-0603-105K-16V</span>
+<span class="font-label text-xs text-on-surface-variant mt-0.5">1µF 16V X5R</span>
+</div>
+<div class="col-span-2 font-body text-sm text-on-surface">Yageo</div>
+<div class="col-span-2 font-body text-sm text-on-surface-variant">Capacitor</div>
+<div class="col-span-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold font-label text-on-tertiary-container bg-tertiary-container/30">
+                                    Alternate
+                                </span>
+</div>
+<div class="col-span-2 font-body text-sm font-mono text-on-surface">4,200</div>
+<div class="col-span-1 flex justify-end gap-2 text-on-surface-variant">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[18px]">description</span></button>
+<button class="hover:text-primary transition-colors opacity-0 group-hover/row:opacity-100"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-4 px-6 py-3 items-center hover:bg-surface-container-high transition-colors group/row cursor-pointer">
+<div class="col-span-3 flex flex-col">
+<span class="font-headline font-bold text-sm text-on-surface">R-0402-10K-1%</span>
+<span class="font-label text-xs text-on-surface-variant mt-0.5">10kΩ 1% 1/16W</span>
+</div>
+<div class="col-span-2 font-body text-sm text-on-surface">Vishay</div>
+<div class="col-span-2 font-body text-sm text-on-surface-variant">Resistor</div>
+<div class="col-span-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold font-label text-on-primary-container bg-primary-container/30">
+                                    Preferred
+                                </span>
+</div>
+<div class="col-span-2 font-body text-sm font-mono text-on-surface">50,000+</div>
+<div class="col-span-1 flex justify-end gap-2 text-on-surface-variant">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[18px]">description</span></button>
+<button class="hover:text-primary transition-colors opacity-0 group-hover/row:opacity-100"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</div>
+</div>
+<!-- Row 4 (Error state) -->
+<div class="grid grid-cols-12 gap-4 px-6 py-3 items-center bg-surface-container-low/30 hover:bg-surface-container-high transition-colors group/row cursor-pointer">
+<div class="col-span-3 flex flex-col">
+<span class="font-headline font-bold text-sm text-on-surface">IC-NRF52840</span>
+<span class="font-label text-xs text-on-surface-variant mt-0.5">Bluetooth 5.0 SoC</span>
+</div>
+<div class="col-span-2 font-body text-sm text-on-surface">Nordic Semi</div>
+<div class="col-span-2 font-body text-sm text-on-surface-variant">IC / RF</div>
+<div class="col-span-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold font-label text-on-error-container bg-error-container/20">
+                                    EOL Notice
+                                </span>
+</div>
+<div class="col-span-2 font-body text-sm font-mono text-error">0</div>
+<div class="col-span-1 flex justify-end gap-2 text-on-surface-variant">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-[18px]">description</span></button>
+<button class="hover:text-primary transition-colors opacity-0 group-hover/row:opacity-100"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

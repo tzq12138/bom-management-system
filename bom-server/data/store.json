@@ -1,0 +1,258 @@
+{
+  "projects": [
+    {
+      "id": "proj-1",
+      "projectId": "PRJ-8902",
+      "name": "Flight Control Board V2",
+      "category": "PCBA",
+      "subAssembly": "Main Board",
+      "currentVersion": "v2.4.1",
+      "author": "Zhang San",
+      "authorInitials": "ZS",
+      "status": "approved",
+      "lastModified": "2026-04-22T15:00:21.115Z",
+      "createdAt": "2026-04-20T15:00:21.116Z",
+      "updatedAt": "2026-04-22T15:00:21.115Z",
+      "parts": [
+        {
+          "id": "part-1",
+          "partNumber": "MCU-32F407",
+          "description": "ARM Cortex-M4 MCU, 168MHz",
+          "quantity": 1,
+          "refDes": "U1",
+          "manufacturer": "STMicroelectronics",
+          "footprint": "LQFP-144",
+          "status": "verified",
+          "createdAt": "2026-04-20T15:00:21.116Z",
+          "updatedAt": "2026-04-22T15:00:21.115Z"
+        },
+        {
+          "id": "part-2",
+          "partNumber": "REG-3.3V-1A",
+          "description": "3.3V low dropout regulator",
+          "quantity": 2,
+          "refDes": "U2,U3",
+          "manufacturer": "Texas Instruments",
+          "footprint": "SOT-223",
+          "status": "outdated",
+          "createdAt": "2026-04-20T15:00:21.116Z",
+          "updatedAt": "2026-04-21T15:00:21.116Z"
+        },
+        {
+          "id": "part-3",
+          "partNumber": "CONN-USB-C",
+          "description": "USB Type-C receptacle",
+          "quantity": 1,
+          "refDes": "J1",
+          "manufacturer": "Unknown",
+          "footprint": "SMT-TypeC",
+          "status": "missing",
+          "createdAt": "2026-04-20T15:00:21.116Z",
+          "updatedAt": "2026-04-21T15:00:21.116Z"
+        }
+      ],
+      "versions": [
+        {
+          "id": "ver-1",
+          "version": "v2.4.1",
+          "description": "Power stage update",
+          "author": "Zhang San",
+          "createdAt": "2026-04-22T15:00:21.115Z",
+          "isActive": true
+        },
+        {
+          "id": "ver-2",
+          "version": "v2.4.0",
+          "description": "Minor fixes",
+          "author": "Zhang San",
+          "createdAt": "2026-04-21T15:00:21.116Z",
+          "isActive": false
+        }
+      ]
+    },
+    {
+      "id": "proj-2",
+      "projectId": "PRJ-8901",
+      "name": "Motor Housing Assembly",
+      "category": "Mechanical",
+      "subAssembly": "Outer Case",
+      "currentVersion": "v1.0.0",
+      "author": "Li Si",
+      "authorInitials": "LS",
+      "status": "pending",
+      "lastModified": "2026-04-21T15:00:21.116Z",
+      "createdAt": "2026-04-20T15:00:21.116Z",
+      "updatedAt": "2026-04-21T15:00:21.116Z",
+      "parts": [
+        {
+          "id": "part-4",
+          "partNumber": "HOUSING-AL-2020",
+          "description": "Aluminum housing frame",
+          "quantity": 4,
+          "refDes": "H1-H4",
+          "manufacturer": "Misumi",
+          "footprint": "N/A",
+          "status": "verified",
+          "createdAt": "2026-04-20T15:00:21.116Z",
+          "updatedAt": "2026-04-21T15:00:21.116Z"
+        }
+      ],
+      "versions": [
+        {
+          "id": "ver-3",
+          "version": "v1.0.0",
+          "description": "Initial release",
+          "author": "Li Si",
+          "createdAt": "2026-04-21T15:00:21.116Z",
+          "isActive": true
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "id": "mat-1",
+      "partNumber": "C-0402-104K-10V",
+      "description": "0.1uF 10V capacitor",
+      "manufacturer": "Murata",
+      "category": "Capacitors",
+      "inventory": 12500,
+      "status": "preferred",
+      "createdAt": "2026-04-22T15:00:21.115Z"
+    },
+    {
+      "id": "mat-2",
+      "partNumber": "R-0402-10K-1%",
+      "description": "10k resistor 1%",
+      "manufacturer": "Vishay",
+      "category": "Resistors",
+      "inventory": 50000,
+      "status": "preferred",
+      "createdAt": "2026-04-21T15:00:21.116Z"
+    },
+    {
+      "id": "mat-3",
+      "partNumber": "IC-NRF52840",
+      "description": "Bluetooth SoC",
+      "manufacturer": "Nordic Semi",
+      "category": "IC",
+      "inventory": 0,
+      "status": "eol",
+      "createdAt": "2026-04-21T15:00:21.116Z"
+    }
+  ],
+  "activities": [
+    {
+      "id": "act-1",
+      "user": "Zhang San",
+      "action": "updated",
+      "target": "Flight Control Board V2",
+      "detail": "Adjusted regulator selection",
+      "timestamp": "2026-04-22T15:00:21.115Z",
+      "type": "edit"
+    },
+    {
+      "id": "act-2",
+      "user": "Li Si",
+      "action": "submitted",
+      "target": "Motor Housing Assembly",
+      "detail": "Waiting for approval",
+      "timestamp": "2026-04-21T15:00:21.116Z",
+      "type": "confirm"
+    }
+  ],
+  "modules": [
+    {
+      "id": "mod-1",
+      "name": "Vision System",
+      "description": "Reusable machine vision building blocks",
+      "icon": "videocam",
+      "subModules": [
+        {
+          "id": "sub-1",
+          "name": "Camera",
+          "description": "Industrial camera options",
+          "parts": [
+            {
+              "id": "mp-1",
+              "partNumber": "MER-500-14U3M",
+              "description": "5MP USB3 industrial camera",
+              "manufacturer": "Hikrobot",
+              "alternates": [
+                {
+                  "manufacturer": "Basler",
+                  "partNumber": "aceA2000-50gc",
+                  "notes": "Higher frame rate"
+                }
+              ],
+              "quantity": 1
+            }
+          ],
+          "createdAt": "2026-04-21T15:00:21.116Z",
+          "updatedAt": "2026-04-22T15:00:21.115Z"
+        },
+        {
+          "id": "sub-mpijwbdkvmef6r",
+          "name": "相机",
+          "description": "11",
+          "parts": [],
+          "createdAt": "2026-05-23T16:16:20.120Z",
+          "updatedAt": "2026-05-23T16:16:20.120Z"
+        }
+      ],
+      "createdAt": "2026-04-21T15:00:21.116Z",
+      "updatedAt": "2026-05-23T16:16:20.120Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "user-1",
+      "username": "admin",
+      "displayName": "System Admin",
+      "email": "admin@bom.local",
+      "password": "admin123",
+      "role": "admin",
+      "initials": "SA",
+      "createdAt": "2026-04-20T15:00:21.116Z"
+    },
+    {
+      "id": "user-2",
+      "username": "zhangsan",
+      "displayName": "Zhang San",
+      "email": "zhangsan@bom.local",
+      "password": "demo",
+      "role": "editor",
+      "initials": "ZS",
+      "createdAt": "2026-04-20T15:00:21.116Z"
+    },
+    {
+      "id": "user-3",
+      "username": "lisi",
+      "displayName": "Li Si",
+      "email": "lisi@bom.local",
+      "password": "demo",
+      "role": "editor",
+      "initials": "LS",
+      "createdAt": "2026-04-20T15:00:21.116Z"
+    },
+    {
+      "id": "user-4",
+      "username": "wangwu",
+      "displayName": "Wang Wu",
+      "email": "wangwu@bom.local",
+      "password": "demo",
+      "role": "viewer",
+      "initials": "WW",
+      "createdAt": "2026-04-20T15:00:21.116Z"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "sess-f8cc393e-874a-4a3c-b5d1-d47ae7927bb5",
+      "token": "f3b170a19bbdd8662bbd867c6dc36e2e9bfc5d080c64f3cf",
+      "userId": "user-2",
+      "createdAt": "2026-05-23T16:13:14.790Z",
+      "expiresAt": "2026-05-30T16:13:14.790Z"
+    }
+  ]
+}

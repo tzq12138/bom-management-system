@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BOM Details &amp; Versioning</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#ceccec",
+                        "surface-dim": "#cbdced",
+                        "outline-variant": "#a6b3c2",
+                        "surface": "#f7f9ff",
+                        "on-secondary-container": "#505257",
+                        "tertiary-dim": "#51506c",
+                        "inverse-on-surface": "#999da3",
+                        "inverse-primary": "#84acf2",
+                        "tertiary": "#5d5c78",
+                        "primary-fixed": "#d6e3ff",
+                        "error-dim": "#4e0309",
+                        "surface-tint": "#335e9f",
+                        "background": "#f7f9ff",
+                        "secondary-fixed": "#e2e2e9",
+                        "outline": "#6f7c89",
+                        "on-primary-fixed-variant": "#305b9c",
+                        "on-tertiary": "#fbf7ff",
+                        "surface-container-low": "#eff4fc",
+                        "on-secondary": "#f8f8ff",
+                        "on-surface-variant": "#53606d",
+                        "on-background": "#27343f",
+                        "surface-variant": "#d6e4f3",
+                        "primary-dim": "#255292",
+                        "error": "#9f403d",
+                        "secondary-dim": "#515359",
+                        "surface-bright": "#f7f9ff",
+                        "surface-container-high": "#dee9f6",
+                        "secondary-fixed-dim": "#d3d4db",
+                        "on-tertiary-fixed": "#3a3953",
+                        "on-error": "#fff7f6",
+                        "on-primary-fixed": "#053e7d",
+                        "on-tertiary-container": "#4d4c67",
+                        "surface-container-highest": "#d6e4f3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#565571",
+                        "on-secondary-fixed-variant": "#5a5b61",
+                        "on-primary-container": "#245191",
+                        "on-error-container": "#752121",
+                        "primary-fixed-dim": "#c0d5ff",
+                        "secondary": "#5d5f65",
+                        "on-primary": "#f7f7ff",
+                        "tertiary-container": "#dcd9fa",
+                        "on-surface": "#27343f",
+                        "primary": "#335e9f",
+                        "surface-container": "#e7eff9",
+                        "secondary-container": "#e2e2e9",
+                        "inverse-surface": "#0a0f13",
+                        "tertiary-fixed": "#dcd9fa",
+                        "error-container": "#fe8983",
+                        "primary-container": "#d6e3ff",
+                        "on-secondary-fixed": "#3d3f45"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .signature-gradient {
+            background: linear-gradient(135deg, theme('colors.primary') 0%, theme('colors.primary-dim') 100%);
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(166, 179, 194, 0.4);
+            border-radius: theme('borderRadius.full');
+        }
+        ::-webkit-scrollbar-corner {
+            background: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col py-6 px-4 gap-2 fixed left-0 top-0 h-full w-64 z-50 bg-gradient-to-b from-[#eff4fc] to-[#f7f9ff] shadow-xl shadow-blue-900/5">
+<div class="flex items-center gap-3 px-2 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-headline font-black text-xl">BO</div>
+<div>
+<h1 class="font-headline text-lg font-black text-[#2B5797]">Blueprint Ops</h1>
+<p class="font-label text-xs text-on-surface-variant font-medium">Engineering Team</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 hover:bg-[#dee9f6]/50 hover:text-[#2B5797] transition-all duration-200 ease-in-out font-['Manrope'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-[#ffffff] text-[#2B5797] rounded-lg shadow-sm font-bold font-['Manrope'] text-sm transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="inventory_2" data-weight="fill" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span>BOM Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 hover:bg-[#dee9f6]/50 hover:text-[#2B5797] transition-all duration-200 ease-in-out font-['Manrope'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="layers">layers</span>
+<span>Material Library</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 hover:bg-[#dee9f6]/50 hover:text-[#2B5797] transition-all duration-200 ease-in-out font-['Manrope'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="group">group</span>
+<span>Team Activity</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-1 pt-4 border-t-0 border-transparent shadow-[0_-10px_30px_-15px_rgba(0,0,0,0.05)]">
+<button class="w-full flex items-center justify-center gap-2 px-4 py-2.5 mb-4 rounded-lg signature-gradient text-on-primary font-headline text-sm font-bold shadow-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Project
+            </button>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-[#dee9f6]/50 hover:text-[#2B5797] transition-all duration-200 ease-in-out font-['Manrope'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-[#dee9f6]/50 hover:text-[#2B5797] transition-all duration-200 ease-in-out font-['Manrope'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Workspace -->
+<div class="flex-1 flex flex-col md:ml-64 h-screen">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between px-8 w-full fixed top-0 right-0 left-0 md:left-64 h-16 z-40 bg-[#f7f9ff] text-[#335e9f] font-['Manrope'] font-semibold tracking-tight border-none flat no shadows">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 text-slate-500 hover:bg-[#dee9f6] rounded-lg transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="text-xl font-bold text-[#2B5797] md:hidden">BOM Catalyst</div>
+<div class="hidden md:flex items-center gap-2 text-sm text-on-surface-variant font-medium">
+<span class="hover:text-primary cursor-pointer transition-colors">Projects</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Industrial Automation</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Smart Controller</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface-container-highest focus:bg-surface-container-lowest border-none rounded-full text-sm font-body w-64 transition-colors outline-none focus:ring-0 focus:border-b-2 focus:border-b-primary" placeholder="Search BOM..." type="text"/>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 text-slate-500 hover:bg-[#dee9f6] rounded-full transition-colors flex items-center justify-center scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-[#dee9f6] rounded-full transition-colors flex items-center justify-center scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-[#dee9f6] rounded-full transition-colors flex items-center justify-center scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-surface-container-high ml-2 cursor-pointer">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkffnPQ79W6XKlnyLp8eelkGMHLaGLaT4y-CzZhszEO8rX5mYWE1fsQMGml0Elg-pXY_eshdxadNfWOpKsqu91TyVEmYrIUPTm9sUjR0s7V9yq1wJBoiaLJTHnqGIsYKUrVe4SoEYPvcYxStP5l4rdReuq_F6ebcol6nkk-od2rV43du0D4i1y6M5t1tiPMgK0UUk8rYAnQjed1-vUN9s2BvWYnol_O6pxD2aJgPcFtbyGa11CK8WLDiTglY0BvAKFFKb_ktHE83kR"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="flex-1 mt-16 p-6 lg:p-8 overflow-y-auto flex flex-col gap-6 relative">
+<!-- Header Section -->
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h2 class="font-headline text-[2rem] font-bold text-on-surface tracking-tight leading-none">Smart Controller v2.1</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-label text-xs font-semibold tracking-wide">Active</span>
+<span class="px-2.5 py-0.5 rounded-full bg-tertiary-container/30 text-on-tertiary-container font-label text-xs font-semibold tracking-wide flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Pending Review
+                        </span>
+</div>
+<p class="font-body text-sm text-on-surface-variant max-w-2xl">Main logic board for industrial automation series. Review required for component substitutions in power delivery sector.</p>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<button class="px-4 py-2 bg-transparent text-primary hover:bg-primary-container rounded-lg font-headline text-sm font-semibold transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Export to Excel
+                    </button>
+<button class="px-4 py-2 bg-surface-container-lowest text-on-surface border border-outline-variant/15 hover:bg-surface-container-high rounded-lg font-headline text-sm font-semibold transition-colors flex items-center gap-2 shadow-[0_2px_8px_-4px_rgba(39,52,63,0.06)]">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                        Compare Versions
+                    </button>
+<button class="px-4 py-2 bg-surface-container-lowest text-on-surface border border-outline-variant/15 hover:bg-surface-container-high rounded-lg font-headline text-sm font-semibold transition-colors flex items-center gap-2 shadow-[0_2px_8px_-4px_rgba(39,52,63,0.06)]">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                        Commit Changes
+                    </button>
+<button class="px-4 py-2 signature-gradient text-on-primary rounded-lg font-headline text-sm font-bold transition-opacity hover:opacity-90 flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+                        Approve Version
+                    </button>
+</div>
+</div>
+<!-- Main Layout Grid -->
+<div class="flex flex-col lg:flex-row gap-6 flex-1 min-h-0">
+<!-- Main Content Area: BOM Table -->
+<div class="flex-1 bg-surface-container-low rounded-xl p-1 flex flex-col overflow-hidden relative">
+<!-- Glassmorphism overlay for part-detail (hidden by default, structural representation) -->
+<div class="absolute inset-y-0 right-0 w-1/3 bg-surface-variant/80 backdrop-blur-[12px] border-l border-outline-variant/15 shadow-[-12px_0_32px_-12px_rgba(39,52,63,0.06)] z-10 hidden flex-col">
+<!-- Panel Content placeholder -->
+</div>
+<div class="flex-1 overflow-auto rounded-lg bg-surface-container-lowest">
+<table class="w-full text-left border-collapse whitespace-nowrap font-body text-[0.875rem]">
+<thead class="sticky top-0 bg-surface-container-low text-on-surface-variant font-headline text-sm font-semibold z-10">
+<tr>
+<th class="px-4 py-3 font-medium w-16">Index</th>
+<th class="px-4 py-3 font-medium">Part Number</th>
+<th class="px-4 py-3 font-medium">Description</th>
+<th class="px-4 py-3 font-medium text-right">Qty</th>
+<th class="px-4 py-3 font-medium">Ref Des</th>
+<th class="px-4 py-3 font-medium">Manufacturer</th>
+<th class="px-4 py-3 font-medium">Footprint</th>
+<th class="px-4 py-3 font-medium w-32 text-center">Status</th>
+</tr>
+</thead>
+<tbody class="text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer">
+<td class="px-4 py-2.5 text-on-surface-variant tabular-nums">1.1</td>
+<td class="px-4 py-2.5 font-headline font-semibold text-primary">MCU-32F407</td>
+<td class="px-4 py-2.5 truncate max-w-[200px]" title="32-bit ARM Cortex-M4 Microcontroller, 168MHz">32-bit ARM Cortex-M4 Micro...</td>
+<td class="px-4 py-2.5 text-right tabular-nums">1</td>
+<td class="px-4 py-2.5 font-mono text-xs text-on-surface-variant">U1</td>
+<td class="px-4 py-2.5 text-sm">STMicroelectronics</td>
+<td class="px-4 py-2.5 text-xs text-on-surface-variant">LQFP-144</td>
+<td class="px-4 py-2.5">
+<div class="flex justify-center">
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label text-xs font-medium">Verified</span>
+</div>
+</td>
+</tr>
+<!-- Row 2 - Zebra -->
+<tr class="bg-surface hover:bg-surface-container-high transition-colors group cursor-pointer">
+<td class="px-4 py-2.5 text-on-surface-variant tabular-nums">1.2</td>
+<td class="px-4 py-2.5 font-headline font-semibold text-primary">CAP-0.1UF-0402</td>
+<td class="px-4 py-2.5 truncate max-w-[200px]">Ceramic Capacitor 0.1uF 10V X5R</td>
+<td class="px-4 py-2.5 text-right tabular-nums">14</td>
+<td class="px-4 py-2.5 font-mono text-xs text-on-surface-variant truncate max-w-[100px]">C1-C10, C14...</td>
+<td class="px-4 py-2.5 text-sm">Murata</td>
+<td class="px-4 py-2.5 text-xs text-on-surface-variant">0402</td>
+<td class="px-4 py-2.5">
+<div class="flex justify-center">
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label text-xs font-medium">Verified</span>
+</div>
+</td>
+</tr>
+<!-- Row 3 - Outdated -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer relative">
+<td class="px-4 py-2.5 text-on-surface-variant tabular-nums">2.1</td>
+<td class="px-4 py-2.5 font-headline font-semibold text-primary">REG-3.3V-1A</td>
+<td class="px-4 py-2.5 truncate max-w-[200px]">LDO Voltage Regulator 3.3V 1A</td>
+<td class="px-4 py-2.5 text-right tabular-nums">2</td>
+<td class="px-4 py-2.5 font-mono text-xs text-on-surface-variant">U2, U3</td>
+<td class="px-4 py-2.5 text-sm">Texas Instruments</td>
+<td class="px-4 py-2.5 text-xs text-on-surface-variant">SOT-223</td>
+<td class="px-4 py-2.5">
+<div class="flex justify-center">
+<span class="px-2.5 py-0.5 rounded-full bg-[#fff0e6] text-[#b35900] font-label text-xs font-medium">Outdated</span>
+</div>
+</td>
+</tr>
+<!-- Row 4 - Zebra -->
+<tr class="bg-surface hover:bg-surface-container-high transition-colors group cursor-pointer">
+<td class="px-4 py-2.5 text-on-surface-variant tabular-nums">2.2</td>
+<td class="px-4 py-2.5 font-headline font-semibold text-primary">IND-4.7UH</td>
+<td class="px-4 py-2.5 truncate max-w-[200px]">Power Inductor 4.7uH 2.5A</td>
+<td class="px-4 py-2.5 text-right tabular-nums">1</td>
+<td class="px-4 py-2.5 font-mono text-xs text-on-surface-variant">L1</td>
+<td class="px-4 py-2.5 text-sm">TDK</td>
+<td class="px-4 py-2.5 text-xs text-on-surface-variant">SMD-6x6</td>
+<td class="px-4 py-2.5">
+<div class="flex justify-center">
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label text-xs font-medium">Verified</span>
+</div>
+</td>
+</tr>
+<!-- Row 5 - Missing -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer bg-error-container/10">
+<td class="px-4 py-2.5 text-on-surface-variant tabular-nums">3.1</td>
+<td class="px-4 py-2.5 font-headline font-semibold text-error">CONN-USB-C</td>
+<td class="px-4 py-2.5 truncate max-w-[200px]">USB Type-C Receptacle, 24 Pin</td>
+<td class="px-4 py-2.5 text-right tabular-nums">1</td>
+<td class="px-4 py-2.5 font-mono text-xs text-on-surface-variant">J1</td>
+<td class="px-4 py-2.5 text-sm text-on-surface-variant italic">Unknown</td>
+<td class="px-4 py-2.5 text-xs text-on-surface-variant">SMT-TypeC</td>
+<td class="px-4 py-2.5">
+<div class="flex justify-center">
+<span class="px-2.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">warning</span>
+                                                Missing
+                                            </span>
+</div>
+</td>
+</tr>
+<!-- Row 6 - Zebra -->
+<tr class="bg-surface hover:bg-surface-container-high transition-colors group cursor-pointer">
+<td class="px-4 py-2.5 text-on-surface-variant tabular-nums">4.1</td>
+<td class="px-4 py-2.5 font-headline font-semibold text-primary">RES-10K-0402</td>
+<td class="px-4 py-2.5 truncate max-w-[200px]">Thick Film Resistor 10K 1%</td>
+<td class="px-4 py-2.5 text-right tabular-nums">8</td>
+<td class="px-4 py-2.5 font-mono text-xs text-on-surface-variant truncate max-w-[100px]">R1-R8</td>
+<td class="px-4 py-2.5 text-sm">Yageo</td>
+<td class="px-4 py-2.5 text-xs text-on-surface-variant">0402</td>
+<td class="px-4 py-2.5">
+<div class="flex justify-center">
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label text-xs font-medium">Verified</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Sidebar: Version History Timeline -->
+<aside class="w-full lg:w-80 flex-shrink-0 flex flex-col gap-4">
+<h3 class="font-headline text-lg font-bold text-on-surface">Version History</h3>
+<div class="flex-1 bg-surface-container-low rounded-xl p-4 overflow-y-auto relative">
+<!-- Timeline Line -->
+<div class="absolute top-8 bottom-8 left-[27px] w-0.5 bg-outline-variant/30"></div>
+<div class="flex flex-col gap-6 relative">
+<!-- Active Version -->
+<div class="flex gap-4 relative">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0 mt-1 z-10 shadow-[0_0_0_4px_theme('colors.surface-container-low')]">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-lg flex-1 shadow-[0_2px_8px_-4px_rgba(39,52,63,0.06)] border border-outline-variant/15">
+<div class="flex justify-between items-start mb-1">
+<span class="font-headline font-bold text-primary text-sm">v2.1</span>
+<span class="font-label text-xs text-on-surface-variant">Current</span>
+</div>
+<p class="font-body text-xs text-on-surface mb-2">Power supply regulation updates and connector review.</p>
+<div class="flex items-center gap-2 mt-2 pt-2 border-t border-outline-variant/15">
+<img alt="Sarah J" class="w-5 h-5 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg3dWMg7Yvc8A7qnpBxJp0yd_lMbIuHNYN3FfdWxePq73BoiR3MKlGXULiqAA5a1J_IwB1c-dV-hVEozUrnbchqIn0opcwbJOH-RYn6koWjUg-DG70Cptf4oc0kQLn1wsMbTamMMv9gah2arPS-RovwGrODlYF-uwbmPlJpsfxJO4hQcm-zt6ITopzlauUHm4OD8LWXo6QoyCDioqMMD6nITr18VZKGsvjlib7cWd9gNbCaFsALXWXBr6PC7H2SKlV5z-jI1vIoyYa"/>
+<span class="font-label text-xs text-on-surface-variant">Edited 2h ago</span>
+</div>
+</div>
+</div>
+<!-- Past Version -->
+<div class="flex gap-4 relative opacity-75 hover:opacity-100 transition-opacity">
+<div class="w-6 h-6 rounded-full bg-surface-dim text-on-surface-variant flex items-center justify-center flex-shrink-0 mt-1 z-10 shadow-[0_0_0_4px_theme('colors.surface-container-low')]">
+<span class="material-symbols-outlined text-[14px]">commit</span>
+</div>
+<div class="bg-surface-dim/30 p-3 rounded-lg flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-headline font-semibold text-on-surface text-sm">v2.0</span>
+<span class="font-label text-xs text-on-surface-variant">Oct 12</span>
+</div>
+<p class="font-body text-xs text-on-surface-variant">Major revision for new casing specs. Replaced all 0603 caps with 0402.</p>
+</div>
+</div>
+<!-- Past Version -->
+<div class="flex gap-4 relative opacity-75 hover:opacity-100 transition-opacity">
+<div class="w-6 h-6 rounded-full bg-surface-dim text-on-surface-variant flex items-center justify-center flex-shrink-0 mt-1 z-10 shadow-[0_0_0_4px_theme('colors.surface-container-low')]">
+<span class="material-symbols-outlined text-[14px]">commit</span>
+</div>
+<div class="bg-surface-dim/30 p-3 rounded-lg flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-headline font-semibold text-on-surface text-sm">v1.5</span>
+<span class="font-label text-xs text-on-surface-variant">Sep 28</span>
+</div>
+<p class="font-body text-xs text-on-surface-variant">Initial production run release. Fixed MCU footprint issue.</p>
+</div>
+</div>
+<!-- Initial Release -->
+<div class="flex gap-4 relative opacity-75 hover:opacity-100 transition-opacity">
+<div class="w-6 h-6 rounded-full bg-surface-dim text-on-surface-variant flex items-center justify-center flex-shrink-0 mt-1 z-10 shadow-[0_0_0_4px_theme('colors.surface-container-low')]">
+<span class="material-symbols-outlined text-[14px]">flag</span>
+</div>
+<div class="bg-surface-dim/30 p-3 rounded-lg flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-headline font-semibold text-on-surface text-sm">v1.0</span>
+<span class="font-label text-xs text-on-surface-variant">Aug 15</span>
+</div>
+<p class="font-body text-xs text-on-surface-variant">Base project creation.</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</body></html>
